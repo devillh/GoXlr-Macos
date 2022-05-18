@@ -11,7 +11,7 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        ControlView().Daemon(command: "stop")
+        Daemon(command: "stop")
     }
 }
 @main
@@ -19,6 +19,7 @@ struct GoXlr_PanelApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
+            
             ContentView()
         }.commands {
             SidebarCommands()
