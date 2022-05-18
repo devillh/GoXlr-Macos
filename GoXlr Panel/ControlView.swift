@@ -3,6 +3,7 @@
 //  GoXlr Panel
 //
 //  Created by Adélaïde Sky on 26/04/2022.
+//  Edited by Eino on 18/05/2022.
 //
 
 
@@ -69,8 +70,8 @@ struct ControlView: View {
         let bundle = Bundle.main
         let client = bundle.url(forResource: "goxlr-client", withExtension: nil)
         guard client != nil else {
-            print("GoXlr-Client executable could not be found!")
-            return("GoXlr-Client executable could not be found!")
+            print("GoXLR-Client executable could not be found!")
+            return("GoXLR-Client executable could not be found!")
         }
         task.executableURL = client!
         if arg1 != "" && arg2 != "" {
@@ -137,51 +138,51 @@ struct ControlView: View {
     }
     
     func GetGoXlrState() -> Array<String> {
-        var returnvalue = [""]
+        var returnValue = [""]
         do {
             let output = ClientCommand(arg1: "", arg2: "")
             print(output)
-            let informations = output.components(separatedBy: "\n")
-            if informations.count <= 2 {
+            let information = output.components(separatedBy: "\n")
+            if information.count <= 2 {
                     return(["nil"])
             }
-            let type = String(String(informations[1]).suffix(5).prefix(4))
-            returnvalue.append(type)
-            let profile = String(informations[13])
-            returnvalue.append(profile)
-            let fadera = String(informations[14]).components(separatedBy: " ")[3].dropLast(1).lowercased()
-            returnvalue.append(fadera)
-            let faderb = String(informations[15]).components(separatedBy: " ")[3].dropLast(1).lowercased()
-            returnvalue.append(faderb)
-            let faderc = String(informations[16]).components(separatedBy: " ")[3].dropLast(1).lowercased()
-            returnvalue.append(faderc)
-            let faderd = String(informations[17]).components(separatedBy: " ")[3].dropLast(1).lowercased()
-            returnvalue.append(faderd)
-            let micvolume = String(String(informations[18]).components(separatedBy: " ")[2].dropLast(1))
-            returnvalue.append(micvolume)
-            let lineinvolume = String(String(informations[19]).components(separatedBy: " ")[2].dropLast(1))
-            returnvalue.append(lineinvolume)
-            let consolevolume = String(String(informations[20]).components(separatedBy: " ")[2].dropLast(1))
-            returnvalue.append(consolevolume)
-            let systemvolume = String(String(informations[21]).components(separatedBy: " ")[2].dropLast(1))
-            returnvalue.append(systemvolume)
-            let gamevolume = String(String(informations[22]).components(separatedBy: " ")[2].dropLast(1))
-            returnvalue.append(gamevolume)
-            let chatvolume = String(String(informations[23]).components(separatedBy: " ")[2].dropLast(1))
-            returnvalue.append(chatvolume)
-            let samplevolume = String(String(informations[24]).components(separatedBy: " ")[2].dropLast(1))
-            returnvalue.append(samplevolume)
-            let musicvolume = String(String(informations[25]).components(separatedBy: " ")[2].dropLast(1))
-            returnvalue.append(musicvolume)
-            let headphonesvolume = String(String(informations[26]).components(separatedBy: " ")[2].dropLast(1))
-            returnvalue.append(headphonesvolume)
-            let micmonitorvolume = String(String(informations[27]).components(separatedBy: " ")[2].dropLast(1))
-            returnvalue.append(micmonitorvolume)
-            let lineoutvolume = String(String(informations[28]).components(separatedBy: " ")[2].dropLast(1))
-            returnvalue.append(lineoutvolume)
+            let type = String(String(information[1]).suffix(5).prefix(4))
+            returnValue.append(type)
+            let profile = String(information[13])
+            returnValue.append(profile)
+            let faderA = String(information[14]).components(separatedBy: " ")[3].dropLast(1).lowercased()
+            returnValue.append(faderA)
+            let faderB = String(information[15]).components(separatedBy: " ")[3].dropLast(1).lowercased()
+            returnValue.append(faderB)
+            let faderC = String(information[16]).components(separatedBy: " ")[3].dropLast(1).lowercased()
+            returnValue.append(faderC)
+            let faderD = String(information[17]).components(separatedBy: " ")[3].dropLast(1).lowercased()
+            returnValue.append(faderD)
+            let volMic = String(String(information[18]).components(separatedBy: " ")[2].dropLast(1))
+            returnValue.append(volMic)
+            let volLineIn = String(String(information[19]).components(separatedBy: " ")[2].dropLast(1))
+            returnValue.append(volLineIn)
+            let volConsole = String(String(information[20]).components(separatedBy: " ")[2].dropLast(1))
+            returnValue.append(volConsole)
+            let volSystem = String(String(information[21]).components(separatedBy: " ")[2].dropLast(1))
+            returnValue.append(volSystem)
+            let volGame = String(String(information[22]).components(separatedBy: " ")[2].dropLast(1))
+            returnValue.append(volGame)
+            let volChat = String(String(information[23]).components(separatedBy: " ")[2].dropLast(1))
+            returnValue.append(volChat)
+            let volSample = String(String(information[24]).components(separatedBy: " ")[2].dropLast(1))
+            returnValue.append(volSample)
+            let volMusic = String(String(information[25]).components(separatedBy: " ")[2].dropLast(1))
+            returnValue.append(volMusic)
+            let volHeadphone = String(String(information[26]).components(separatedBy: " ")[2].dropLast(1))
+            returnValue.append(volHeadphone)
+            let volMonitorMic = String(String(information[27]).components(separatedBy: " ")[2].dropLast(1))
+            returnValue.append(volMonitorMic)
+            let volLineOut = String(String(information[28]).components(separatedBy: " ")[2].dropLast(1))
+            returnValue.append(volLineOut)
             
         }
-        return(returnvalue)
+        return(returnValue)
     }
     
 
@@ -190,15 +191,15 @@ struct ControlView: View {
     @State private var music: Double = 0
     @State private var game: Double = 0
     @State private var console: Double = 0
-    @State private var linein: Double = 0
-    @State private var lineout: Double = 0
+    @State private var lineIn: Double = 0
+    @State private var lineOut: Double = 0
     @State private var system: Double = 0
     @State private var sample: Double = 0
     @State private var bleep: Double = 0
     @State private var headphones: Double = 0
-    @State private var micmonitor: Double = 0
+    @State private var micMonitor: Double = 0
     
-    @State var tabname: String? = "Mixer"
+    @State var tabName: String? = "Mixer"
 
 
     @State private var showingAlert = false
@@ -216,28 +217,28 @@ struct ControlView: View {
             selectedSliderB = String(state[4])
             selectedSliderC = String(state[5])
             selectedSliderD = String(state[6])
-            if state[3] == "linein" {
+            if state[3] == "lineIn" {
                 selectedSliderA = "line-in"
             }
-            if state[4] == "linein" {
+            if state[4] == "lineIn" {
                 selectedSliderB = "line-in"
             }
-            if state[5] == "linein" {
+            if state[5] == "lineIn" {
                 selectedSliderC = "line-in"
             }
-            if state[6] == "linein" {
+            if state[6] == "lineIn" {
                 selectedSliderD = "line-in"
             }
-            if state[3] == "lineout" {
+            if state[3] == "lineOut" {
                 selectedSliderA = "line-out"
             }
-            if state[4] == "lineout" {
+            if state[4] == "lineOut" {
                 selectedSliderB = "line-out"
             }
-            if state[5] == "lineout" {
+            if state[5] == "lineOut" {
                 selectedSliderC = "line-out"
             }
-            if state[6] == "lineout" {
+            if state[6] == "lineOut" {
                 selectedSliderD = "line-out"
             }
         }
@@ -261,9 +262,9 @@ struct ControlView: View {
             volume = (Int(state[11]) ?? 0) * 255 / 100
             console = Double(volume)
             volume = (Int(state[12]) ?? 0) * 255 / 100
-            linein = Double(volume)
+            lineIn = Double(volume)
             volume = (Int(state[13]) ?? 0) * 255 / 100
-            lineout = Double(volume)
+            lineOut = Double(volume)
             volume = (Int(state[14]) ?? 0) * 255 / 100
             system = Double(volume)
             volume = (Int(state[15]) ?? 0) * 255 / 100
@@ -271,7 +272,7 @@ struct ControlView: View {
             volume = (Int(state[16]) ?? 0) * 255 / 100
             headphones = Double(volume)
             volume = (Int(state[17]) ?? 0) * 255 / 100
-            micmonitor = Double(volume)
+            micMonitor = Double(volume)
         }
     }
     var body: some View {
@@ -281,8 +282,8 @@ struct ControlView: View {
                         VStack(){
                             Slider(value: $mic, in: 0...255){ newProgress in
                                 
-                                let roundedvalue = String(format: "%.0f", mic)
-                                print(ClientCommand(arg1: "--mic-volume", arg2:  roundedvalue))
+                                let roundedVal = String(format: "%.0f", mic)
+                                print(ClientCommand(arg1: "--mic-volume", arg2:  roundedVal))
                                     
                             }.rotationEffect(.degrees(-90.0), anchor: .center)
                                 .padding(.bottom, 50)
@@ -292,8 +293,8 @@ struct ControlView: View {
                         VStack(){
                             Slider(value: $chat, in: 0...255){ newProgress in
                                 
-                                let roundedvalue = String(format: "%.0f", chat)
-                                print(ClientCommand(arg1: "--chat-volume", arg2:  roundedvalue))
+                                let roundedVal = String(format: "%.0f", chat)
+                                print(ClientCommand(arg1: "--chat-volume", arg2:  roundedVal))
                             }.rotationEffect(.degrees(-90.0), anchor: .center)
                                 .padding(.bottom, 50)
                                 .frame(width: 100.0)
@@ -301,8 +302,8 @@ struct ControlView: View {
                         }
                         VStack(){
                         Slider(value: $music, in: 0...255){ newProgress in
-                            let roundedvalue = String(format: "%.0f", music)
-                            print(ClientCommand(arg1: "--music-volume", arg2:  roundedvalue))
+                            let roundedVal = String(format: "%.0f", music)
+                            print(ClientCommand(arg1: "--music-volume", arg2:  roundedVal))
                         }.rotationEffect(.degrees(-90.0), anchor: .center)
                                 .padding(.bottom, 50)
                                 .frame(width: 100.0)
@@ -311,8 +312,8 @@ struct ControlView: View {
                         }
                         VStack(){
                         Slider(value: $game, in: 0...255){ newProgress in
-                            let roundedvalue = String(format: "%.0f", game)
-                            print(ClientCommand(arg1: "--game-volume", arg2:  roundedvalue))
+                            let roundedVal = String(format: "%.0f", game)
+                            print(ClientCommand(arg1: "--game-volume", arg2:  roundedVal))
                         }.rotationEffect(.degrees(-90.0), anchor: .center)
                                 .padding(.bottom, 50)
                                 .frame(width: 100.0)
@@ -320,8 +321,8 @@ struct ControlView: View {
                         }
                         VStack(){
                         Slider(value: $console, in: 0...255){ newProgress in
-                            let roundedvalue = String(format: "%.0f", console)
-                            print(ClientCommand(arg1: "--console-volume", arg2:  roundedvalue))
+                            let roundedVal = String(format: "%.0f", console)
+                            print(ClientCommand(arg1: "--console-volume", arg2:  roundedVal))
                         }.rotationEffect(.degrees(-90.0), anchor: .center)
                                 .padding(.bottom, 50)
                                 .frame(width: 100.0)
@@ -329,9 +330,9 @@ struct ControlView: View {
                         }
                         VStack(){
                         
-                        Slider(value: $linein, in: 0...255){ newProgress in
-                            let roundedvalue = String(format: "%.0f", linein)
-                            print(ClientCommand(arg1: "--line-in-volume", arg2:  roundedvalue))
+                        Slider(value: $lineIn, in: 0...255){ newProgress in
+                            let roundedVal = String(format: "%.0f", lineIn)
+                            print(ClientCommand(arg1: "--line-in-volume", arg2:  roundedVal))
                         }.rotationEffect(.degrees(-90.0), anchor: .center)
                                 .padding(.bottom, 50)
                                 .frame(width: 100.0)
@@ -340,9 +341,9 @@ struct ControlView: View {
                         }
                         VStack(){
                         
-                        Slider(value: $lineout, in: 0...255){ newProgress in
-                            let roundedvalue = String(format: "%.0f", lineout)
-                            print(ClientCommand(arg1: "--line-out-volume", arg2:  roundedvalue))
+                        Slider(value: $lineOut, in: 0...255){ newProgress in
+                            let roundedVal = String(format: "%.0f", lineOut)
+                            print(ClientCommand(arg1: "--line-out-volume", arg2:  roundedVal))
                         }.rotationEffect(.degrees(-90.0), anchor: .center)
                                 .padding(.bottom, 50)
                                 .frame(width: 100.0)
@@ -351,8 +352,8 @@ struct ControlView: View {
                         }
                         VStack(){
                             Slider(value: $system, in: 0...255){ newProgress in
-                                let roundedvalue = String(format: "%.0f", system)
-                                print(ClientCommand(arg1: "--system-volume", arg2:  roundedvalue))
+                                let roundedVal = String(format: "%.0f", system)
+                                print(ClientCommand(arg1: "--system-volume", arg2:  roundedVal))
                             }.rotationEffect(.degrees(-90.0), anchor: .center)
                                 .padding(.bottom, 50)
                                 .frame(width: 100.0)
@@ -360,8 +361,8 @@ struct ControlView: View {
                         }
                         VStack(){
                             Slider(value: $sample, in: 0...255){ newProgress in
-                                let roundedvalue = String(format: "%.0f", sample)
-                                print(ClientCommand(arg1: "--sample-volume", arg2:  roundedvalue))
+                                let roundedVal = String(format: "%.0f", sample)
+                                print(ClientCommand(arg1: "--sample-volume", arg2:  roundedVal))
                             }.rotationEffect(.degrees(-90.0), anchor: .center)
                                 .padding(.bottom, 50)
                                 .frame(width: 100.0)
@@ -371,17 +372,17 @@ struct ControlView: View {
                 Group() {
                     VStack(){
                         Slider(value: $headphones, in: 0...255){ newProgress in
-                            let roundedvalue = String(format: "%.0f", headphones)
-                            print(ClientCommand(arg1: "--headphones-volume", arg2:  roundedvalue))
+                            let roundedVal = String(format: "%.0f", headphones)
+                            print(ClientCommand(arg1: "--headphones-volume", arg2:  roundedVal))
                         }.rotationEffect(.degrees(-90.0), anchor: .center)
                             .padding(.bottom, 50)
                             .frame(width: 100.0)
                     Text("Headphones")
                     }
                     VStack(){
-                        Slider(value: $micmonitor, in: 0...255){ newProgress in
-                            let roundedvalue = String(format: "%.0f", micmonitor)
-                                print(ClientCommand(arg1: "--mic-monitor-volume", arg2:  roundedvalue))
+                        Slider(value: $micMonitor, in: 0...255){ newProgress in
+                            let roundedVal = String(format: "%.0f", micMonitor)
+                                print(ClientCommand(arg1: "--mic-monitor-volume", arg2:  roundedVal))
                         }.rotationEffect(.degrees(-90.0), anchor: .center)
                             .padding(.bottom, 50)
                             .frame(width: 100.0)
@@ -496,7 +497,7 @@ struct ControlView: View {
         .alert("ERROR", isPresented: $showingAlert) {
                     Button("OK", role: .cancel) { }
         } message: {
-            Text("Is the daemon installed ?")
-        }.navigationTitle(tabname!)
+            Text("Is the daemon installed?")
+        }.navigationTitle(tabName!)
     }
 }

@@ -3,13 +3,14 @@
 //  GoXlr Panel
 //
 //  Created by Adélaïde Sky on 26/04/2022.
+//  Edited by Eino on 18/05/2022.
 //
 
 import SwiftUI
 import ShellOut
 
 struct AboutView: View {
-    @State var tabname: String? = "About"
+    @State var tabName: String? = "About"
     
     
     var body: some View {
@@ -47,7 +48,7 @@ struct AboutView: View {
                 Text("@FrostyCoolSlug (Craig McLure) |")
                     .font(.system(size: 15))
                     .fontWeight(.light)
-                Text("@Dinnerbone (Dinnerbone Nathan Adams) |")
+                Text("@Dinnerbone (Nathan \"Dinnerbone\" Adams) |")
                     .font(.system(size: 15))
                     .fontWeight(.light)
                 Text("@lm41 (lm41 Lars)")
@@ -69,7 +70,7 @@ struct AboutView: View {
                     NSWorkspace.shared.open(NSURL(string: "https://github.com/Adelenade/GoXlr-Macos/blob/main/LICENSE")! as URL)
                 }
             
-        }.navigationTitle(tabname!)
+        }.navigationTitle(tabName!)
                 
     }
 }

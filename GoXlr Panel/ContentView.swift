@@ -1,3 +1,10 @@
+//
+//  SettingsView.swift
+//  GoXlr Panel
+//
+//  Created by Adélaïde Sky on 26/04/2022.
+//  Edited by Eino on 18/05/2022.
+//
 
 import SwiftUI
 

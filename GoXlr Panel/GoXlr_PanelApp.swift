@@ -3,6 +3,7 @@
 //  GoXlr Panel
 //
 //  Created by Adélaïde Sky on 24/04/2022.
+//  Edited by Eino on 18/05/2022.
 //
 
 import SwiftUI
@@ -10,7 +11,6 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        print("aha")
         ControlView().Daemon(command: "stop")
     }
 }
@@ -21,7 +21,7 @@ struct GoXlr_PanelApp: App {
         WindowGroup {
             ContentView()
         }.commands {
-            SidebarCommands() // 1
+            SidebarCommands()
         }
     }
 }

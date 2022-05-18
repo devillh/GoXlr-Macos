@@ -3,13 +3,14 @@
 //  GoXlr Panel
 //
 //  Created by Adélaïde Sky on 26/04/2022.
+//  Edited by Eino on 18/05/2022.
 //
 
 import SwiftUI
 import ShellOut
 
 struct HomeView: View {
-    @State var tabname: String? = "Home"
+    @State var tabName: String? = "Home"
     
     func ClientCommand(arg1: String, arg2: String) -> String {
         let task = Process()
@@ -50,8 +51,8 @@ struct HomeView: View {
         let task = Process()
         let pipe = Pipe()
         let bundle = Bundle.main
-        let goxlrdaemon = bundle.url(forResource: "goxlr-daemon", withExtension: nil)
-        task.executableURL = goxlrdaemon!
+        let goXlrDaemon = bundle.url(forResource: "goxlr-daemon", withExtension: nil)
+        task.executableURL = goXlrDaemon!
         task.standardOutput = pipe
         task.standardError = pipe
         if command == "start" {
@@ -102,17 +103,17 @@ struct HomeView: View {
         VStack(alignment: .center) {
             Text("👋")
                 .font(.system(size: 60))
-            Text("Welcome " + NSFullUserName() + " !")
+            Text("Welcome " + NSFullUserName() + "!")
                 .bold()
                 .font(.system(size: 45))
                 .fontWeight(.heavy)
             if GoXlrConnected() == "yes" {
-                Text("Your GoXlr is connected and initialized")
+                Text("Your GoXLR is connected and initialized")
                     .padding(.top)
                     .font(.title3)
             }
             if GoXlrConnected() == "no" {
-                Text("Connect your GoXlr to get started")
+                Text("Connect your GoXLR to get started")
                     .padding(.top)
                     .font(.title3)
             }
@@ -123,7 +124,7 @@ struct HomeView: View {
             }
             
         }.onAppear(perform: LaunchDaemon)
-            .navigationTitle(tabname!)
+            .navigationTitle(tabName!)
                 
     }
 }
